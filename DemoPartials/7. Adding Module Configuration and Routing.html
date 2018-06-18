@@ -1,4 +1,4 @@
-﻿<div class="container" data-ng-app="demoApp">
+﻿<div class="container" data-ng-app="demoApp1">
 	<div>
 		<h3>Adding Module Configuration and Routing</h3>
         <!-- ng-view handles loading partials into it based 
@@ -7,31 +7,31 @@
 	</div>
 </div>
 
+<script src="../Scripts/angular.js"></script>
+<script src="7.js"></script>
+
 <script>
     var demoApp = angular.module('demoApp', []);
 
-    demoApp.config(function ($routeProvider) {
+    var urlBase = '';
+
+    demoApp1.config(function ($routeProvider) {
         $routeProvider
             .when('/',
                 {
-                    controller: 'SimpleController',
+		    // bind the controller to the view
+                    controller: 'SimpleController1',
                     templateUrl: urlBase + '7. Partial1.html'
                 })
             //Define a route that has a route parameter in it (:customerID)
             .when('/partial2',
                 {
-                    controller: 'SimpleController',
+		    // bind the controller to the view
+                    controller: 'SimpleController2',
                     templateUrl: urlBase + '7. Partial2.html'
                 })
-            .otherwise({ redirectTo: '/partial1' });
+            .otherwise({ redirectTo: '/' });
     });
 
-    demoApp.controller('SimpleController', function ($scope) {
-        $scope.customers = [
-			{ name: 'Dave Jones', city: 'Phoenix' },
-			{ name: 'Jamie Riley', city: 'Atlanta' },
-			{ name: 'Heedy Wahlin', city: 'Chandler' },
-			{ name: 'Thomas Winter', city: 'Seattle' }
-        ];
-    });
+    // demoApp.controller(SimpleController2);
 </script>
